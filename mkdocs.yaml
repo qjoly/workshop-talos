@@ -1,0 +1,4 @@
+site_name: Talos Workshop
+theme:
+  name: terminal
+site_url: https://qjoly.github.io/workshop-talos/
