@@ -14,4 +14,6 @@ Fell free to ask for help or open issues if you run into any trouble!
 
 Once your environment is ready, head over to the [Getting Started](getting-started.md) guide to begin setting up your Talos workshop.
 
+Ready to launch an actual cluster? Follow the hands-on walkthrough in [Create My First Talos Cluster](create-first-cluster.md).
+
 *For those who don't know Kubernetes yet, I recommend checking out the ["What is Kubernetes?"](kubernetes.md) page to get a basic understanding of the concepts involved.*
