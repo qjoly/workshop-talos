@@ -12,7 +12,7 @@ locals {
           datastore_id = storage_id
         }
       ]
-    ]) : entry.key => {
+      ]) : entry.key => {
       user_id      = entry.user_id
       datastore_id = entry.datastore_id
     }
@@ -28,7 +28,7 @@ locals {
           vnet = target.vnet
         }
       ]
-    ]) : entry.key => {
+      ]) : entry.key => {
       user = entry.user
       zone = entry.zone
       vnet = entry.vnet

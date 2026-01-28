@@ -86,7 +86,7 @@ variable "talos_iso_file_name" {
 variable "vm_storage_targets" {
   description = "List of storage identifiers (e.g. local, local-lvm) to which users get ACLs for ISO usage and VM disk allocation"
   type        = list(string)
-  default     = [
+  default = [
     "local",
     "local-lvm",
   ]
