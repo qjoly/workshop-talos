@@ -86,3 +86,18 @@ You should see both the control-plane and worker nodes in `Ready` status. Deploy
 - Verify the SDN bridge permissions were applied (Terraform `user_sdn_acl` resource) if NIC attachment fails during VM creation.
 
 Once everything looks good you have a baseline Talos cluster. Use snapshots or Terraform state to reset quickly between workshop iterations.
+
+# Next steps
+
+Now that your Talos cluster is up and running, here are some recommended next steps:
+- Explore Talos machine configuration options to customize networking, storage, and security settings.
+- Deploy more complex Kubernetes workloads using `kubectl` and practice scaling, updating, and monitoring
+
+Is it finished? No, there are still lots of things to improve.
+
+- Secrets are contained in plain text inside the generated machine config files.
+- How to customize a Talos node to add features like VPN, monitoring agents, or logging?
+- Commands are scoped to a single node at a time. Managing multiple nodes could be tedious.
+- Overrides to the base Talos config (for example, adding static routes) require manual YAML edits.
+
+Let's address these pain points in nexts chapters.
