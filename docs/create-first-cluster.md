@@ -21,7 +21,7 @@ talosctl gen config workshop-cluster https://10.0.0.10:6443
 # to set static routes, registries, or kubelet flags.
 ```
 
-Keep `clusterconfig/clusterconfig.yaml` safe; it contains the shared secrets used during bootstrap.
+You will get two more files: `controlplane.yaml` and `worker.yaml`.
 
 ## 2. Clone the Talos template
 
