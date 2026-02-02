@@ -83,15 +83,15 @@ You should see both the control-plane and worker nodes in `Ready` status. Deploy
 
 - `talosctl get machineconfig` helps confirm whether the VM picked up the intended YAML.
 - Use `talosctl logs kubelet -n ${NODE_IP}` if pods get stuck in `ContainerCreating`.
-- Verify the SDN bridge permissions were applied (Terraform `user_sdn_acl` resource) if NIC attachment fails during VM creation.
 
 Once everything looks good you have a baseline Talos cluster. Use snapshots or Terraform state to reset quickly between workshop iterations.
 
 # Next steps
 
 Now that your Talos cluster is up and running, here are some recommended next steps:
-- Explore Talos machine configuration options to customize networking, storage, and security settings.
-- Deploy more complex Kubernetes workloads using `kubectl` and practice scaling, updating, and monitoring
+
+- Explore Talos machine configuration options to customize networking, storage,and security settings.
+- Deploy more complex Kubernetes workloads using `kubectl` and practice scaling,updating, and monitoring
 
 Is it finished? No, there are still lots of things to improve.
 
@@ -101,3 +101,4 @@ Is it finished? No, there are still lots of things to improve.
 - Overrides to the base Talos config (for example, adding static routes) require manual YAML edits.
 
 Let's address these pain points in nexts chapters.
+
