@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.1, mkdocs-terminal-4.8.0">
+     
+     
+    
+    <link rel="canonical" href="https://qjoly.github.io/workshop-talos/extensions/"><link rel="icon" type="image/png" sizes="192x192" href="../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Add features by creating extensions - Talos Workshop</title>
+
+
+<link href="../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../css/normalize.css" rel="stylesheet">
+<link href="../css/terminal.css" rel="stylesheet">
+<link href="../css/theme.css" rel="stylesheet">
+<link href="../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+
+
+     
+    
+    
+
+    
+    <!-- search css support -->
+<link href="../css/search/bootstrap-modal.css" rel="stylesheet">
+<!-- search scripts -->
+<script>
+    var base_url = "..",
+    shortcuts = "{}";
+</script>
+<script src="../js/jquery/jquery-1.10.1.min.js" defer></script>
+<script src="../js/bootstrap/bootstrap.min.js" defer></script>
+<script src="../js/mkdocs/base.js" defer></script>
+    
+    
+    
+    
+    <script src="../search/main.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="https://qjoly.github.io/workshop-talos/" class="no-style">Talos Workshop</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href=".." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../kubernetes/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">What's Kubernetes?</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                
+                    
+                    
+
+
+<li property="itemListElement" typeof="ListItem">
+    <a href="#" class="menu-item" data-toggle="modal" data-target="#mkdocs_search_modal" property="item" typeof="SearchAction">
+        <i aria-hidden="true" class="fa fa-search"></i> <span property="name">Search</span>
+    </a>
+    <meta property="position" content="2">
+</li>
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          <li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="terminal-mkdocs-side-nav-item" href="..">Home</a>
+        
+    
+    
+    
+       </li>
+        
+          <li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="terminal-mkdocs-side-nav-item" href="../kubernetes/">What's Kubernetes?</a>
+        
+    
+    
+    
+       </li>
+        
+          <li class="terminal-mkdocs-side-nav-li">
+    
+        
+        
+        
+            
+    
+        
+        <span class="
+        
+    terminal-mkdocs-side-nav-item--active terminal-mkdocs-side-nav-section-no-index">Talos Workshop</span>
+    
+    
+        
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="terminal-mkdocs-side-nav-item" href="../create-first-cluster/">Create your first cluster</a>
+        
+    
+    </li>
+            
+        
+            
+            
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="terminal-mkdocs-side-nav-item" href="../talhelper/">Use talhelper to optimize the workflow</a>
+        
+    
+    </li>
+            
+        
+            
+            
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="terminal-mkdocs-side-nav-item" href="../terraform/">Terraform to deploy Talos everywhere</a>
+        
+    
+    </li>
+            
+        
+            
+            
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        <span class="terminal-mkdocs-side-nav-item--active">Add features by creating extensions</span>
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+       </li>
+        
+    </ul>
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#why-install-extensions">Why Install Extensions?</a></li>
+        <li><a href="#how-do-we-install-an-extension">How do we install an extension?</a></li>
+        <li><a href="#using-a-custom-talos-image">Using a Custom Talos Image</a></li>
+        
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+    
+    
+    
+    
+    
+
+<section id="mkdocs-terminal-content">
+    <p>Now that you're familiar with the core features, let's explore how to enhance your experience using extensions. Extensions allow you to add new functionalities and customize your workflow.</p>
+<h2 id="why-install-extensions">Why Install Extensions?</h2>
+<p>Since Talos is a minimalist OS, it doesn’t include all the tools you might expect from a traditional OS. If you want to install an EDR agent (like CrowdStrike), a driver for an NVIDIA card, or any other program that cannot run in Kubernetes (including <a href="https://kubernetes.io/docs/tasks/configure-pod-container/static-pod/">static pods</a>), you’ll need to use extensions.</p>
+<p>There are two ways to install an extension on Talos:</p>
+<ul>
+<li>By using a custom Talos image that already includes the extension;</li>
+<li>Or by specifying an OCI image containing the extension to be installed.</li>
+</ul>
+<p>Each method corresponds to a different use case.</p>
+<p>The custom image is useful when the extension is necessary for Talos in maintenance mode (when it is waiting for its configuration). A common example of this case could be a driver (e.g. a RAID card) whose presence is mandatory for Talos to detect the device (if it doesn’t find a disk, it cannot be installed).</p>
+<p>The other method, which involves installing the node using a specific OCI image(installer), is useful when the extension needs to be active while the node is already running. For example, a RuntimeClass to launch MicroVMs in Kubernetes, a Tailscale VPN…</p>
+<p>Of course, it is possible to use both methods simultaneously. In the case of the RAID driver, it must be present in the base Talos image for the disk to be recognized, and then reinstalled via the OCI image so that the extension is retained after the OS installation. Thus, it is needed both before and after installation.</p>
+<p>An important point to keep in mind: if you specify in the Talos configuration an image providing an extension (in the <code>machine.install.image</code> field or during an upgrade), it will replace the extensions already present.</p>
+<p><img alt="alt text" src="../image-1.png" /></p>
+<p>In summary, here’s what you need to remember:</p>
+<ul>
+<li>If you install a custom Talos image and use the default OCI image (ghcr.io/siderolabs/installer:v1.x.x), the extension will be retained after the node installation.</li>
+<li>If you install a custom Talos image and use a different OCI image (in the configuration or during an update), the extension will not be retained.</li>
+</ul>
+<h2 id="how-do-we-install-an-extension">How do we install an extension?</h2>
+<p>Let’s take a concrete example. I often use Proxmox in my labs. It’s a hypervisor I appreciate for its flexibility and simplicity of use. Notably, it has a handy feature: displaying the IPs of VMs in the web interface. To achieve this, you need to install an agent on each VM so they can report this information.</p>
+<p>Thus, we need to install the <code>qemu-guest-agent</code> on our nodes. Let’s see how to do this.</p>
+<h2 id="using-a-custom-talos-image">Using a Custom Talos Image</h2>
+<p>Installing a Custom Talos Image</p>
+<p>The simplest method to create this image, which already contains the extension, is to use Factory. This site allows you to fill out a form to create an image tailored to your needs (architecture, kernel args, Talos version, extensions).</p>
+<p>You will be presented with a page asking you to check the various extensions you want to install. Simply check <code>qemu-guest-agent</code> and validate.</p>
+<p><img alt="alt text" src="https://a-cup-of.coffee/blog/talos-ext/image.png" /></p>
+<p>Depending on how you want to install your machine, you will have the choice between:</p>
+<ul>
+<li>Downloading the ISO image;</li>
+<li>Downloading the disk image (raw);</li>
+<li>Using a PXE script.</li>
+</ul>
+<p><img alt="alt text" src="../image-2.png" /></p>
+<p>Your image request is associated with an ID (<code>ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515</code> in my case) that you can use to retrieve the image at any time. It is also possible to script the image generation using the Factory API. When you finish filling out the form, you get a summary of your request “as code” in YAML:</p>
+<pre><code class="language-yaml">customization:
+    systemExtensions:
+        officialExtensions:
+            - siderolabs/qemu-guest-agent
+</code></pre>
+<p>You can also use this summary to re-generate the image like this:</p>
+<pre><code class="language-bash">$ yq eval -o=json customization.yaml &gt; customization.json # Convert it to JSON
+$ curl -s -X POST https://factory.talos.dev/schematics \
+  -H &quot;Content-Type: application/json&quot; \
+  -d @customization.json
+{&quot;id&quot;:&quot;ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515&quot;}
+</code></pre>
+<p>From there, you can easily integrate the image generation into a pipeline or automation script… Or continue using the Factory web interface, it’s up to you 😄.</p>
+<p>By downloading the raw disk image, you can then use it to create your VMs in Proxmox or any other hypervisor of your choice with the pre-installed extension.</p>
+<p>Otherwise, you can also use image OCI to upgrade an existing Talos installation with the extension. You can use it like below:</p>
+<pre><code class="language-bash">schematicid=376567988ad370138ad8b2698212367b8edcb69b5fd68c80be1f2ec7d603b4ba
+talosctl upgrade -i factory.talos.dev/installer/${schematicid}:v1.12.1 --nodes &lt;node-ip&gt;
+</code></pre>
+<p>Now you can customize your Talos image with the extensions you need!</p>
+<p>Want to deep dive into extensions ? Check out my article <a href="https://a-cup-of.coffee/blog/talos-ext/">Customizing Talos with Extensions</a> where I explore how to create your own extensions.</p>
+</section>
+
+<section id="mkdocs-terminal-after-content">
+    
+</section>
+
+            </main>
+        </div>
+        <hr><footer>
+    <div class="terminal-mkdocs-footer-grid">
+        <div id="terminal-mkdocs-footer-copyright-info">
+             Site built with <a href="http://www.mkdocs.org">MkDocs</a> and <a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+        </div>
+    </div>
+</footer>
+    </div>
+
+    
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="alertdialog" aria-modal="true" aria-labelledby="searchModalLabel">
+    <div class="modal-dialog modal-lg" role="search">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="searchModalLabel">Search</h5>
+                <button type="button" class="close btn btn-default btn-ghost" data-dismiss="modal" aria-label="Close">x</button>
+            </div>
+            <div class="modal-body">
+                <p id="searchInputLabel">Type to start searching</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" aria-labelledby="searchInputLabel" placeholder="" id="mkdocs-search-query" title="Please enter search terms here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No document matches found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</body>
+
+</html>
