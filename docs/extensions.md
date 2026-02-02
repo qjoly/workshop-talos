@@ -4,6 +4,8 @@ Title: Working with Extensions
 
 Now that you're familiar with the core features, let's explore how to enhance your experience using extensions. Extensions allow you to add new functionalities and customize your workflow.
 
+Need to author your own extension? Jump to [Create a Talos Extension](create-talos-extension.md) for a step-by-step build guide.
+
 ## Why Install Extensions?#
 
 Since Talos is a minimalist OS, it doesn’t include all the tools you might expect from a traditional OS. If you want to install an EDR agent (like CrowdStrike), a driver for an NVIDIA card, or any other program that cannot run in Kubernetes (including [static pods](https://kubernetes.io/docs/tasks/configure-pod-container/static-pod/)), you’ll need to use extensions.
