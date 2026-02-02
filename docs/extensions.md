@@ -4,12 +4,9 @@ Title: Working with Extensions
 
 Now that you're familiar with the core features, let's explore how to enhance your experience using extensions. Extensions allow you to add new functionalities and customize your workflow.
 
-Need to author your own extension? Jump to [Create a Talos Extension](create-talos-extension.md) for a step-by-step build guide.
-
-## Why Install Extensions?#
+## Why Install Extensions? #
 
 Since Talos is a minimalist OS, it doesn’t include all the tools you might expect from a traditional OS. If you want to install an EDR agent (like CrowdStrike), a driver for an NVIDIA card, or any other program that cannot run in Kubernetes (including [static pods](https://kubernetes.io/docs/tasks/configure-pod-container/static-pod/)), you’ll need to use extensions.
-
 
 There are two ways to install an extension on Talos:
 
@@ -33,7 +30,7 @@ In summary, here’s what you need to remember:
 - If you install a custom Talos image and use the default OCI image (ghcr.io/siderolabs/installer:v1.x.x), the extension will be retained after the node installation.
 - If you install a custom Talos image and use a different OCI image (in the configuration or during an update), the extension will not be retained.
 
-## How do we install an extension?#
+## How do we install an extension? #
 
 Let’s take a concrete example. I often use Proxmox in my labs. It’s a hypervisor I appreciate for its flexibility and simplicity of use. Notably, it has a handy feature: displaying the IPs of VMs in the web interface. To achieve this, you need to install an agent on each VM so they can report this information.
 
@@ -58,7 +55,6 @@ Depending on how you want to install your machine, you will have the choice betw
 ![alt text](image-2.png)
 
 Your image request is associated with an ID (`ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515` in my case) that you can use to retrieve the image at any time. It is also possible to script the image generation using the Factory API. When you finish filling out the form, you get a summary of your request “as code” in YAML:
-
 
 ```yaml
 customization:

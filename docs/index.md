@@ -1,4 +1,4 @@
-# Welcome aboard!
+# Welcome aboard
 
 Welcome to the Talos Workshop documentation site. Here you'll find all the information you need to set up and run Talos workshops using our Proxmox VE Terraform stack.
 
@@ -11,8 +11,6 @@ Before diving in, ensure you have the following prerequisites in place:
 - `kubectl` installed locally to interact with the Kubernetes clusters running on Talos nodes (installation instructions can be found [here](https://kubernetes.io/docs/tasks/tools/))
 
 Fell free to ask for help or open issues if you run into any trouble!
-
-Once your environment is ready, head over to the [Getting Started](getting-started.md) guide to begin setting up your Talos workshop.
 
 Ready to launch an actual cluster? Follow the hands-on walkthrough in [Create My First Talos Cluster](create-first-cluster.md).
 
