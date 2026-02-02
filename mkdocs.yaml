@@ -4,7 +4,10 @@ theme:
 site_url: https://qjoly.github.io/workshop-talos/
 
 nav:
-    - Home: 'index.md'
-    - "What's Kubernetes?": 'kubernetes.md'
-    - Talos Workshop:
-        - "Create your first cluster": 'create-first-cluster.md'
+  - Home: "index.md"
+  - "What's Kubernetes?": "kubernetes.md"
+  - Talos Workshop:
+      - "Create your first cluster": "create-first-cluster.md"
+      - "Use talhelper to optimize the workflow": "talhelper.md"
+      - "Terraform to deploy Talos everywhere": "terraform.md"
+      - "Add features by creating extensions": "extensions.md"
