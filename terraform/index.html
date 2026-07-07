@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.1, mkdocs-terminal-4.8.0">
+     
+     
+    
+    <link rel="canonical" href="https://qjoly.github.io/workshop-talos/terraform/"><link rel="icon" type="image/png" sizes="192x192" href="../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Terraform to deploy Talos everywhere - Talos Workshop</title>
+
+
+<link href="../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../css/normalize.css" rel="stylesheet">
+<link href="../css/terminal.css" rel="stylesheet">
+<link href="../css/theme.css" rel="stylesheet">
+<link href="../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+
+
+     
+    
+    
+
+    
+    <!-- search css support -->
+<link href="../css/search/bootstrap-modal.css" rel="stylesheet">
+<!-- search scripts -->
+<script>
+    var base_url = "..",
+    shortcuts = "{}";
+</script>
+<script src="../js/jquery/jquery-1.10.1.min.js" defer></script>
+<script src="../js/bootstrap/bootstrap.min.js" defer></script>
+<script src="../js/mkdocs/base.js" defer></script>
+    
+    
+    
+    
+    <script src="../search/main.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="https://qjoly.github.io/workshop-talos/" class="no-style">Talos Workshop</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href=".." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../kubernetes/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">What's Kubernetes?</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                
+                    
+                    
+
+
+<li property="itemListElement" typeof="ListItem">
+    <a href="#" class="menu-item" data-toggle="modal" data-target="#mkdocs_search_modal" property="item" typeof="SearchAction">
+        <i aria-hidden="true" class="fa fa-search"></i> <span property="name">Search</span>
+    </a>
+    <meta property="position" content="2">
+</li>
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          <li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="terminal-mkdocs-side-nav-item" href="..">Home</a>
+        
+    
+    
+    
+       </li>
+        
+          <li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="terminal-mkdocs-side-nav-item" href="../kubernetes/">What's Kubernetes?</a>
+        
+    
+    
+    
+       </li>
+        
+          <li class="terminal-mkdocs-side-nav-li">
+    
+        
+        
+        
+            
+    
+        
+        <span class="
+        
+    terminal-mkdocs-side-nav-item--active terminal-mkdocs-side-nav-section-no-index">Talos Workshop</span>
+    
+    
+        
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="terminal-mkdocs-side-nav-item" href="../create-first-cluster/">Create your first cluster</a>
+        
+    
+    </li>
+            
+        
+            
+            
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="terminal-mkdocs-side-nav-item" href="../talhelper/">Use talhelper to optimize the workflow</a>
+        
+    
+    </li>
+            
+        
+            
+            
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        <span class="terminal-mkdocs-side-nav-item--active">Terraform to deploy Talos everywhere</span>
+    
+    </li>
+            
+        
+            
+            
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="terminal-mkdocs-side-nav-item" href="../extensions/">Add features by creating extensions</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+       </li>
+        
+    </ul>
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#terraform-with-talos-and-helm">Terraform with Talos and Helm</a></li>
+        <li><a href="#overview">Overview</a></li><li><a href="#terraform-providers">Terraform Providers</a></li><li><a href="#project-structure">Project Structure</a></li><li><a href="#getting-started">Getting Started</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="terraform-with-talos-and-helm">Terraform with Talos and Helm</h1>
+<p>This guide shows you how to use Terraform to automate the deployment and management of Talos Linux clusters with integrated Helm application deployment.</p>
+<h2 id="overview">Overview</h2>
+<p>Terraform is an Infrastructure as Code (IaC) tool that allows you to define and provision infrastructure through declarative configuration files. When combined with Talos Linux and Helm, it provides a complete automation solution from cluster creation to application deployment.</p>
+<h2 id="terraform-providers">Terraform Providers</h2>
+<h3 id="talos-provider">Talos Provider</h3>
+<p>The Talos provider allows you to manage Talos Linux clusters declaratively.</p>
+<p><strong>Version</strong>: <code>0.10.1</code><br />
+<strong>Provider</strong>: <code>siderolabs/talos</code></p>
+<p><strong>Capabilities:</strong>
+- Generate machine configurations
+- Bootstrap clusters
+- Manage cluster secrets
+- Apply configuration patches
+- Generate kubeconfig and talosconfig</p>
+<h3 id="helm-provider">Helm Provider</h3>
+<p>The Helm provider enables automated application deployment to Kubernetes.</p>
+<p><strong>Version</strong>: <code>3.0.2</code><br />
+<strong>Provider</strong>: <code>hashicorp/helm</code></p>
+<p><strong>Features:</strong>
+- Deploy Helm charts
+- Manage releases
+- Configure chart values
+- Automatic authentication via kubeconfig</p>
+<h2 id="project-structure">Project Structure</h2>
+<p>The workshop's Terraform configuration for Talos is in the <code>tofu/talos/</code> directory:</p>
+<pre><code>tofu/talos/
+├── provider.tf          # Talos and Helm providers configuration
+├── vars.tf              # Cluster variables (IP, name)
+└── main.tf              # Complete cluster lifecycle and Helm deployments
+</code></pre>
+<h2 id="getting-started">Getting Started</h2>
+<p>Before deploying a Talos cluster with Terraform, ensure you have:</p>
+<ol>
+<li><strong>Talos nodes ready</strong>: VMs or bare metal machines with Talos Linux booted</li>
+<li><strong>Network configuration</strong>: IP addresses assigned to your nodes</li>
+<li><strong>Terraform installed</strong>: Version 1.10.0 or higher</li>
+</ol>
+<h3 id="step-1-provider-configuration">Step 1: Provider Configuration</h3>
+<p>The <code>provider.tf</code> file configures both the Talos and Helm providers:</p>
+<pre><code class="language-hcl">terraform {
+  required_version = &quot;&gt;= 1.10.0&quot;
+  required_providers {
+    talos = {
+      source  = &quot;siderolabs/talos&quot;
+      version = &quot;0.10.1&quot;
+    }
+    helm = {
+      source  = &quot;hashicorp/helm&quot;
+      version = &quot;3.0.2&quot;
+    }
+  }
+}
+
+provider &quot;helm&quot; {
+  kubernetes = {
+    host                   = &quot;https://${var.cp_ip}:6443&quot;
+    client_certificate     = base64decode(yamldecode(talos_cluster_kubeconfig.kubeconfig.kubeconfig_raw).users[0].user.client-certificate-data)
+    client_key             = base64decode(yamldecode(talos_cluster_kubeconfig.kubeconfig.kubeconfig_raw).users[0].user.client-key-data)
+    cluster_ca_certificate = base64decode(yamldecode(talos_cluster_kubeconfig.kubeconfig.kubeconfig_raw).clusters[0].cluster.certificate-authority-data)
+  }
+}
+</code></pre>
+<p><strong>Key Points:</strong>
+- Uses Terraform &gt;= 1.10.0
+- Talos provider version 0.10.1
+- Helm provider 3.0.2 configured with Talos-generated kubeconfig
+- Helm automatically extracts certificates from the kubeconfig</p>
+<h3 id="step-2-define-variables">Step 2: Define Variables</h3>
+<p>The <code>vars.tf</code> file defines cluster parameters:</p>
+<pre><code class="language-hcl">variable &quot;cp_ip&quot; {
+  type        = string
+  default     = &quot;192.168.0.222&quot;
+  description = &quot;Control plane IP address&quot;
+}
+
+variable &quot;cluster_name&quot; {
+  type        = string
+  default     = &quot;my-cluster&quot;
+  description = &quot;Name of the Kubernetes cluster&quot;
+}
+</code></pre>
+<h3 id="step-3-complete-cluster-deployment">Step 3: Complete Cluster Deployment</h3>
+<p>The <code>main.tf</code> file implements the full cluster lifecycle:</p>
+<pre><code class="language-hcl"># 1. Generate machine secrets
+resource &quot;talos_machine_secrets&quot; &quot;talos&quot; {
+}
+
+# 2. Generate controller configuration
+data &quot;talos_machine_configuration&quot; &quot;controller&quot; {
+  cluster_name     = var.cluster_name
+  cluster_endpoint = &quot;https://${var.cp_ip}:6443&quot;
+  machine_type     = &quot;controlplane&quot;
+  machine_secrets  = talos_machine_secrets.talos.machine_secrets
+
+  config_patches = [
+    yamlencode({
+      cluster = {
+        allowSchedulingOnControlPlanes = true
+      }
+    }),
+  ]
+}
+
+# 3. Generate talosconfig
+data &quot;talos_client_configuration&quot; &quot;talosconfig&quot; {
+  cluster_name         = var.cluster_name
+  client_configuration = talos_machine_secrets.talos.client_configuration
+  endpoints            = [var.cp_ip]
+}
+
+# 4. Apply configuration to control plane
+resource &quot;talos_machine_configuration_apply&quot; &quot;cp_config_apply&quot; {
+  client_configuration        = talos_machine_secrets.talos.client_configuration
+  machine_configuration_input = data.talos_machine_configuration.controller.machine_configuration
+  count                       = 1
+  node                        = var.cp_ip
+}
+
+# 5. Bootstrap the cluster
+resource &quot;talos_machine_bootstrap&quot; &quot;bootstrap&quot; {
+  depends_on           = [ talos_machine_configuration_apply.cp_config_apply ]
+  client_configuration = talos_machine_secrets.talos.client_configuration
+  node                 = var.cp_ip
+}
+
+# 6. Generate kubeconfig
+resource &quot;talos_cluster_kubeconfig&quot; &quot;kubeconfig&quot; {
+  depends_on           = [ talos_machine_bootstrap.bootstrap ]
+  client_configuration = talos_machine_secrets.talos.client_configuration
+  node                 = var.cp_ip
+}
+
+# 7. Deploy application with Helm
+resource &quot;helm_release&quot; &quot;nginx&quot; {
+  depends_on = [ talos_cluster_kubeconfig.kubeconfig ]
+
+  name       = &quot;nginx&quot;
+  repository = &quot;https://charts.bitnami.com/bitnami&quot;
+  chart      = &quot;nginx&quot;
+  namespace  = &quot;default&quot;
+
+  set = [
+    {
+      name  = &quot;service.type&quot;
+      value = &quot;NodePort&quot;
+    }
+  ]
+}
+
+# Outputs
+output &quot;talosconfig&quot; {
+  value     = data.talos_client_configuration.talosconfig.talos_config
+  sensitive = true
+}
+
+output &quot;kubeconfig&quot; {
+  value     = talos_cluster_kubeconfig.kubeconfig.kubeconfig_raw
+  sensitive = true
+}
+</code></pre>
+<h3 id="understanding-the-workflow">Understanding the Workflow</h3>
+<ol>
+<li><strong>Machine Secrets</strong>: Generate cryptographic secrets for the cluster</li>
+<li><strong>Machine Configuration</strong>: Create control plane configuration with scheduling enabled</li>
+<li><strong>Talosconfig</strong>: Generate client configuration for <code>talosctl</code> commands</li>
+<li><strong>Apply Configuration</strong>: Push configuration to the control plane node</li>
+<li><strong>Bootstrap</strong>: Initialize the Kubernetes cluster</li>
+<li><strong>Kubeconfig</strong>: Generate Kubernetes client configuration</li>
+<li><strong>Helm Deployment</strong>: Automatically deploy an NGINX application</li>
+</ol>
+<h3 id="deploying-the-example">Deploying the Example</h3>
+<pre><code class="language-bash">cd tofu/talos/
+
+# Initialize Terraform
+terraform init
+
+# Review the plan
+terraform plan
+
+# Deploy the cluster
+terraform apply
+
+# Extract kubeconfig
+terraform output -raw kubeconfig &gt; ~/.kube/config
+
+# Extract talosconfig
+terraform output -raw talosconfig &gt; ~/.talos/config
+
+# Verify the cluster
+kubectl get nodes
+kubectl get pods -A
+</code></pre>
+</section>
+
+            </main>
+        </div>
+        <hr><footer>
+    <div class="terminal-mkdocs-footer-grid">
+        <div id="terminal-mkdocs-footer-copyright-info">
+             Site built with <a href="http://www.mkdocs.org">MkDocs</a> and <a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+        </div>
+    </div>
+</footer>
+    </div>
+
+    
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="alertdialog" aria-modal="true" aria-labelledby="searchModalLabel">
+    <div class="modal-dialog modal-lg" role="search">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="searchModalLabel">Search</h5>
+                <button type="button" class="close btn btn-default btn-ghost" data-dismiss="modal" aria-label="Close">x</button>
+            </div>
+            <div class="modal-body">
+                <p id="searchInputLabel">Type to start searching</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" aria-labelledby="searchInputLabel" placeholder="" id="mkdocs-search-query" title="Please enter search terms here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No document matches found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</body>
+
+</html>

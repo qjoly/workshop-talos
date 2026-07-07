@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.1, mkdocs-terminal-4.8.0">
+     
+     
+    
+    <link rel="canonical" href="https://qjoly.github.io/workshop-talos/kubernetes/"><link rel="icon" type="image/png" sizes="192x192" href="../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>What's Kubernetes? - Talos Workshop</title>
+
+
+<link href="../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../css/normalize.css" rel="stylesheet">
+<link href="../css/terminal.css" rel="stylesheet">
+<link href="../css/theme.css" rel="stylesheet">
+<link href="../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+
+
+     
+    
+    
+
+    
+    <!-- search css support -->
+<link href="../css/search/bootstrap-modal.css" rel="stylesheet">
+<!-- search scripts -->
+<script>
+    var base_url = "..",
+    shortcuts = "{}";
+</script>
+<script src="../js/jquery/jquery-1.10.1.min.js" defer></script>
+<script src="../js/bootstrap/bootstrap.min.js" defer></script>
+<script src="../js/mkdocs/base.js" defer></script>
+    
+    
+    
+    
+    <script src="../search/main.js"></script>
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="https://qjoly.github.io/workshop-talos/" class="no-style">Talos Workshop</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href=".." class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="./" class="menu-item active" property="item" typeof="WebPage">
+                        <span property="name">What's Kubernetes?</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                
+                    
+                    
+
+
+<li property="itemListElement" typeof="ListItem">
+    <a href="#" class="menu-item" data-toggle="modal" data-target="#mkdocs_search_modal" property="item" typeof="SearchAction">
+        <i aria-hidden="true" class="fa fa-search"></i> <span property="name">Search</span>
+    </a>
+    <meta property="position" content="2">
+</li>
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          <li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="terminal-mkdocs-side-nav-item" href="..">Home</a>
+        
+    
+    
+    
+       </li>
+        
+          <li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        <span class="terminal-mkdocs-side-nav-item--active">What's Kubernetes?</span>
+    
+    
+    
+       </li>
+        
+          <li class="terminal-mkdocs-side-nav-li">
+    
+        
+        
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Talos Workshop</span>
+        
+    
+    
+        
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="terminal-mkdocs-side-nav-item" href="../create-first-cluster/">Create your first cluster</a>
+        
+    
+    </li>
+            
+        
+            
+            
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="terminal-mkdocs-side-nav-item" href="../talhelper/">Use talhelper to optimize the workflow</a>
+        
+    
+    </li>
+            
+        
+            
+            
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="terminal-mkdocs-side-nav-item" href="../terraform/">Terraform to deploy Talos everywhere</a>
+        
+    
+    </li>
+            
+        
+            
+            
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="terminal-mkdocs-side-nav-item" href="../extensions/">Add features by creating extensions</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+       </li>
+        
+    </ul>
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#what-is-kubernetes">What is Kubernetes?</a></li>
+        <li><a href="#why-kubernetes">Why Kubernetes?</a></li>
+        <li><a href="#core-concepts">Core concepts</a></li><li><a href="#how-to-deploy-kubernetes">How to deploy Kubernetes?</a></li><li><a href="#why-kubernetes-matters-for-the-talos-workshop">Why Kubernetes matters for the Talos workshop</a></li><li><a href="#next-steps">Next steps</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="what-is-kubernetes">What is Kubernetes?</h1>
+<p>Kubernetes (often abbreviated as K8s) is an open-source platform that automates deploying, scaling, and operating containerized applications. It was originally designed by Google and is now maintained by the Cloud Native Computing Foundation (CNCF). With Kubernetes you can run applications across clusters of machines while letting the control plane handle scheduling, failover, and service discovery.</p>
+<h1 id="why-kubernetes">Why Kubernetes?</h1>
+<p>Kubernetes has become the de facto standard for container orchestration due to its powerful abstractions and extensibility. It enables developers to focus on building applications without worrying about the underlying infrastructure. Key benefits include:</p>
+<ul>
+<li><strong>Scalability</strong>: Easily scale applications up or down based on demand.</li>
+<li><strong>Self-healing</strong>: Automatically restarts failed containers, replaces and reschedules them when nodes die.</li>
+<li><strong>Service discovery and load balancing</strong>: Exposes containers using DNS names or IP</li>
+<li><strong>Auditing and monitoring</strong>: Integrates with logging and monitoring tools to provide insights into application performance.</li>
+</ul>
+<p>Note that (warning, this is a hot take) Kubernetes can match to <strong>many</strong> use cases, even without the need for a full-blown microservices architecture <strong>or</strong> high availability, you can use it to simply manage containerized workloads on a single node cluster.</p>
+<h2 id="core-concepts">Core concepts</h2>
+<h3 id="control-plane-vs-worker-nodes">Control plane vs. worker nodes</h3>
+<ul>
+<li><strong>Control plane</strong>: hosts components like the API server, scheduler, and controllers. It makes global decisions and exposes the Kubernetes API.</li>
+<li><strong>Worker nodes</strong>: run your application workloads inside containers. Each node hosts a kubelet (agent) and a container runtime (containerd, CRI-O, etc.).</li>
+</ul>
+<p><img alt="Schema of kubernetes components" src="https://kubernetes.io/images/docs/components-of-kubernetes.svg" /></p>
+<p>Control plane components can run on dedicated nodes or be co-located with worker nodes in smaller clusters.</p>
+<h3 id="pods">Pods</h3>
+<p>Pods are the smallest deployable unit in Kubernetes. A pod usually wraps a single container, but multiple tightly coupled containers can run inside one pod when they must share storage or networking.</p>
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+      - name: my-container
+        image: nginx:latest
+        ports:
+            - containerPort: 80
+</code></pre>
+<h3 id="services">Services</h3>
+<p>Services provide a stable virtual IP (ClusterIP) or endpoint for a set of pods. They abstract away pod IP churn and can also expose workloads outside the cluster via NodePort, LoadBalancer, or Ingress resources.</p>
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+    name: my-service
+spec:
+    selector:
+        app: my-app
+    ports:
+        - protocol: TCP
+          port: 80
+          targetPort: 8080
+    type: ClusterIP
+</code></pre>
+<h3 id="deployments">Deployments</h3>
+<p>Deployments manage the lifecycle of replicated pods. You declare the desired number of replicas and Kubernetes ensures the actual state matches (self-healing). Rolling updates and rollbacks are handled automatically.</p>
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.27
+          ports:
+            - containerPort: 80
+          env:
+            - name: APP_MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: web-config
+                  key: welcome-message
+</code></pre>
+<h3 id="configmaps-and-secrets">ConfigMaps and Secrets</h3>
+<ul>
+<li><strong>ConfigMaps</strong>: store non-sensitive configuration data so you can decouple config from container images.</li>
+<li><strong>Secrets</strong>: same pattern as ConfigMaps but designed for sensitive data (credentials, certificates). They are base64 encoded and can be encrypted at rest.</li>
+</ul>
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: web-config
+data:
+  welcome-message: &quot;Hello Talos workshop!&quot;
+  feature-flags: |
+    enableCaching=true
+    showBetaBanner=false
+</code></pre>
+<h2 id="how-to-deploy-kubernetes">How to deploy Kubernetes?</h2>
+<ul>
+<li>Kubeadm: official tool to bootstrap a minimal cluster.</li>
+<li>Managed services: EKS (AWS), GKE (GCP), AKS (Azure) offer fully managed Kubernetes clusters.</li>
+<li>Ansible with Kubespray: for more control over cluster configuration.</li>
+<li>K3s/K0s: lightweight Kubernetes distribution for edge and IoT.</li>
+<li>Talos Linux: purpose-built OS for running Kubernetes clusters with an API-driven approach.</li>
+</ul>
+<h2 id="why-kubernetes-matters-for-the-talos-workshop">Why Kubernetes matters for the Talos workshop</h2>
+<p>Talos Linux provides a minimal, API-driven operating system for running Kubernetes control planes and worker nodes. Understanding Kubernetes basics helps you:</p>
+<ol>
+<li>Validate that Talos nodes joined your cluster and became Ready.</li>
+<li>Deploy Talos machine configs that reference Kubernetes resources (manifests, patches).</li>
+<li>Use <code>kubectl</code> to inspect pods, services, and events when troubleshooting.</li>
+<li>Scale your workshop workloads (add replicas, expose services) without touching the underlying VMs.</li>
+</ol>
+<h2 id="next-steps">Next steps</h2>
+<p>If you are brand new to Kubernetes, practice the following commands once your Talos cluster is up:</p>
+<pre><code class="language-bash">kubectl get nodes
+kubectl get pods -A
+kubectl describe pod &lt;pod-name&gt; -n &lt;namespace&gt;
+</code></pre>
+<p>These commands let you confirm node status, list workloads across namespaces, and inspect pod-level events/logs. Armed with these fundamentals, you will navigate the rest of the workshop much more confidently.</p>
+</section>
+
+            </main>
+        </div>
+        <hr><footer>
+    <div class="terminal-mkdocs-footer-grid">
+        <div id="terminal-mkdocs-footer-copyright-info">
+             Site built with <a href="http://www.mkdocs.org">MkDocs</a> and <a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+        </div>
+    </div>
+</footer>
+    </div>
+
+    
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="alertdialog" aria-modal="true" aria-labelledby="searchModalLabel">
+    <div class="modal-dialog modal-lg" role="search">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="searchModalLabel">Search</h5>
+                <button type="button" class="close btn btn-default btn-ghost" data-dismiss="modal" aria-label="Close">x</button>
+            </div>
+            <div class="modal-body">
+                <p id="searchInputLabel">Type to start searching</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" aria-labelledby="searchInputLabel" placeholder="" id="mkdocs-search-query" title="Please enter search terms here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No document matches found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</body>
+
+</html>
